@@ -36,7 +36,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | x   | F05 | Score points: Count number of gold coins x 100 | P | |
 | x   | F06 | Score points: Count number of diamonds x 100 | P | |
 | x   | F07 | Score points: 3-of-a-kind | B (F04) | P |
-| x   | F08 | Turn based functionality | P | |
+| x   | F08 | Turn-based functionality | P | |
 | x   | F09 | Print percentage of wins for each player | P | |
 | x   | F10 | Play 42 games  |  P  |   |
 | ... | ... | ... |
