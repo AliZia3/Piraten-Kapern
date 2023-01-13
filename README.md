@@ -1,7 +1,7 @@
 # A1 - Piraten Karpen
 
-  * Author: < You name here >
-  * Email: < Your email here >
+  * Author: < Muhammed Ali Zia >
+  * Email: < ziam8@mcmaster.ca >
 
 ## Build and Execution
 
@@ -23,7 +23,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
  * Status: 
    * Pending (P), Started (S), Blocked (B), Done (D)
  * Definition of Done (DoD):
-   * < Your DoD goes here >
+   * < The criteria that will decide that a feauture is done is if it functions according to the rulebook >
 
 ### Backlog 
 
