@@ -32,7 +32,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |  x   | F01 | Roll a dice                                          |    D    | 01/01/23 | 01/12/23  |
 |  x   | F02 | Roll eight dices                                     |    S    | 01/12/23 |
 |  x   | F03 | Player keeping random dice at their turn             | B (F02) |          |
-|  x   | F04 | end of turn with three cranes                        |    P    |          |
+|  x   | F04 | end of game with three skulls                        |    P    |          |
 |  x   | F05 | Score points: Count number of gold coins x 100       |    P    |          |
 |  x   | F06 | Score points: Count number of diamonds x 100         |    P    |          |
 |  x   | F07 | Score points: 3-of-a-kind                            | B (F04) |    P     |
