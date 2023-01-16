@@ -8,12 +8,12 @@ public class Dice {
     static Random bag = new Random();
 
     // Rolls 1 dice
-    public Faces roll() {
+    public static Faces roll() {
         return Faces.values()[bag.nextInt(howManyFaces)];
     }
 
     // Rolls 8 dice
-    public ArrayList<Faces> rollEight() {
+    public static ArrayList<Faces> rollEight() {
         ArrayList<Faces> roll_results = new ArrayList<Faces>();
 
         for (int i = 0; i < 8; i++) {
