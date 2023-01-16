@@ -1,22 +1,26 @@
 package pk;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Dice {
+    static int howManyFaces = Faces.values().length;
+    static Random bag = new Random();
 
-    public static ArrayList<Faces> roll() {
+    // Rolls 1 dice
+    public Faces roll() {
+        return Faces.values()[bag.nextInt(howManyFaces)];
+    }
+
+    // Rolls 8 dice
+    public ArrayList<Faces> rollEight() {
         ArrayList<Faces> roll_results = new ArrayList<Faces>();
-        int howManyFaces = Faces.values().length;
-//        System.out.println("  (DEBUG) there are " + howManyFaces + " faces");
-//        System.out.println("  (DEBUG) " + Arrays.toString(Faces.values()));
-        Random bag = new Random();
 
-        KeepDice dices = new KeepDice();
-
-        for (int i = 0; i < dices.diceInHand(); i++) {
+        for (int i = 0; i < 8; i++) {
             roll_results.add(Faces.values()[bag.nextInt(howManyFaces)]);
         }
+
         return roll_results;
+
     }
 }
