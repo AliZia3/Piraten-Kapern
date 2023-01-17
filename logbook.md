@@ -11,3 +11,4 @@ Jan 15, 2023
 Jan 16, 2023
 
 -   Completed feature F03 (Player keeping random dice at their turn)
+-   Completed feature F04 (Score points: number of gold + diamonds x 100)
