@@ -15,9 +15,9 @@ Jan 16, 2023
 
 Jan 17, 2023
 
--   Completed Feature (F05)
--   Completed Feature (F06)
+-   Completed Feature F05 (end of turn/no points with three or more skulls)
+-   Completed Feature F06 (Turn-based Functionality)
 -   Completed MVP
--   Completed Feature (F07)
--   Completed Feature (F08)
+-   Completed Feature F07 (Play 42 games)
+-   Completed Feature F08 (Print percentage of wins for each player)
 -   Integrated all features for smooth gameplay and simulations
