@@ -36,8 +36,14 @@ public class PiratenKarpen {
             }
 
         }
+
+        double player1WinPercent = player1Wins * 1.0 / gamesCount * 1.0;
+        double player2WinPercent = player2Wins * 1.0 / gamesCount * 1.0;
+
         System.out.println("Player 1 Wins: " + player1Wins);
         System.out.println("Player 2 Wins: " + player2Wins);
+        System.out.println("Player l Win %:" + player1WinPercent);
+        System.out.println("Player 2 Win %:" + player2WinPercent);
 
         System.out.println("That's all folks!");
     }
