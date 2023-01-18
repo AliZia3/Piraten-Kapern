@@ -9,7 +9,7 @@ public class Dice {
 
     // Roll 1 dice
     public Faces roll() {
-    return Faces.values()[bag.nextInt(howManyFaces)];
+        return Faces.values()[bag.nextInt(howManyFaces)];
     }
 
     // Roll 8 dice (F02)
