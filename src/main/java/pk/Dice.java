@@ -13,7 +13,7 @@ public class Dice {
     // }
 
     // * Roll 8 dice (F02)
-    public ArrayList<Faces> rollEight() {
+    public static ArrayList<Faces> rollEight() {
         ArrayList<Faces> rollResults = new ArrayList<Faces>();
 
         for (int i = 0; i < 8; i++) {
@@ -23,16 +23,16 @@ public class Dice {
         return rollResults;
     }
 
-    // * Player keeps random number of dice (F03)
-    public ArrayList<Faces> nextRoll(ArrayList<Faces> rollResults) {
+    // * Roll/Keep random dice (F03)
+    public static ArrayList<Faces> reRoll(ArrayList<Faces> prevRollResults) {
         Random dice = new Random();
         int dices = dice.nextInt(7) + 2;
+        ArrayList<Faces> nextRollResults = prevRollResults;
 
-        ArrayList<Faces> nextRollResults = new ArrayList<Faces>(rollResults);
-
-        for (int i = 0; i < dices; i++) {
-            int index = bag.nextInt(8);
-            nextRollResults.set(index, Faces.values()[bag.nextInt(howManyFaces)]);
+        for(int i=0; i<dices; i++){
+            if (nextRollResults.get(i)!=Faces.SKULL){
+                nextRollResults.set(i, Faces.values()[bag.nextInt(howManyFaces)]);
+            }
         }
 
         return nextRollResults;

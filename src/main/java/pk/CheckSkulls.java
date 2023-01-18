@@ -3,10 +3,10 @@ package pk;
 import java.util.ArrayList;
 
 public class CheckSkulls {
-    public int Skulls(ArrayList<Faces> roll_results) {
+    public static int Skulls(ArrayList<Faces> rollResults) {
         int skullCount = 0;
-        for (int i = 0; i < roll_results.size(); i++) {
-            if (roll_results.get(i) == Faces.SKULL) {
+        for (int i = 0; i < rollResults.size(); i++) {
+            if (rollResults.get(i) == Faces.SKULL) {
                 skullCount++;
             }
         }
