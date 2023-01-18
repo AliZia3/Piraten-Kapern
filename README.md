@@ -36,6 +36,6 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |  x   | F05 | end of turn/no points with three or more skulls      |   D    | 01/12/23 | 01/17/23  |
 |  x   | F06 | Turn-based Functionality                             |   D    | 01/16/23 | 01/17/23  |
 |  x   | F07 | Track players' scores                                |   D    | 01/17/23 | 01/17/23  |
-|      | F08 | Play 42 games                                        |   D    | 01/17/23 | 01/17/23  |
-|      | F09 | Print percentage of wins for each player             |   D    | 01/17/23 | 01/17/23  |
+|      | F08 | Play 42 games                                        |   D    | 01/17/23 | 01/18/23  |
+|      | F09 | Print percentage of wins for each player             |   D    | 01/17/23 | 01/18/23  |
 | ...  | ... | ...                                                  |

@@ -30,6 +30,8 @@ public class PiratenKarpen {
 
         }
 
+        System.out.println("Player 1 Wins: " + player1Wins);
+        System.out.println("Player 2 Wins: " + player2Wins);
 
         System.out.println("That's all folks!");
     }
