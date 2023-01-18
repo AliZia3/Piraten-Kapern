@@ -33,8 +33,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |  x   | F02 | Roll eight dices                                     |   D    | 01/12/23 | 01/16/23  |
 |  x   | F03 | Player keeping and rolling random dice at their turn |   D    | 01/16/23 | 01/16/23  |
 |  x   | F04 | Score points: number of gold + diamonds x 100        |   D    | 01/12/23 | 01/16/23  |
-|  x   | F05 | end of turn with three or more skulls                |   P    | 01/12/23 | 01/17/23  |
-|  x   | F05 | No points given when 3 or more skulls                |   P    | 01/12/23 | 01/17/23  |
+|  x   | F05 | end of turn/no points with three or more skulls      |   P    | 01/12/23 | 01/17/23  |
 |  x   | F06 | Turn-based Functionality                             |   P    | 01/16/23 | 01/17/23  |
 |      | F07 | Play 42 games                                        |   P    | 01/17/23 | 01/17/23  |
 |      | F08 | Print percentage of wins for each player             |   P    | 01/17/23 | 01/17/23  |

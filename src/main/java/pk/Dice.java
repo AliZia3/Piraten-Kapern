@@ -29,8 +29,8 @@ public class Dice {
         int dices = dice.nextInt(7) + 2;
         ArrayList<Faces> nextRollResults = prevRollResults;
 
-        for(int i=0; i<dices; i++){
-            if (nextRollResults.get(i)!=Faces.SKULL){
+        for (int i = 0; i < dices; i++) {
+            if (nextRollResults.get(i) != Faces.SKULL) {
                 nextRollResults.set(i, Faces.values()[bag.nextInt(howManyFaces)]);
             }
         }

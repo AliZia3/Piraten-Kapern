@@ -20,20 +20,22 @@ public class PiratenKarpen {
 
         System.out.println("Welcome to Piraten Karpen Simulator!");
 
-        int player1Score = 0;
-        int player2Score = 0;
+        for (int i = 0; i < gamesCount; i++) {
+            int player1Score = 0;
+            int player2Score = 0;
 
-        while (player1Score <= 6000 && player2Score <= 6000) {
-            player1Score += Turns.turn(player1);
-            player2Score += Turns.turn(player2);
+            while (player1Score <= 6000 && player2Score <= 6000) {
+                player1Score += Turns.turn(player1);
+                player2Score += Turns.turn(player2);
+            }
+
+            if (player1Score >= 6000) {
+                player1Wins++;
+            } else {
+                player2Wins++;
+            }
+
         }
-
-        if (player1Score >= 6000) {
-            player1Wins++;
-        } else {
-            player2Wins++;
-        }
-
         System.out.println("Player 1 Wins: " + player1Wins);
         System.out.println("Player 2 Wins: " + player2Wins);
 

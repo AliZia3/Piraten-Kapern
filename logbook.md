@@ -15,4 +15,9 @@ Jan 16, 2023
 
 Jan 17, 2023
 
--   Completed Feautre
+-   Completed Feature (F05)
+-   Completed Feature (F06)
+-   Completed MVP
+-   Completed Feature (F07)
+-   Completed Feature (F08)
+-   Integrated all features for smooth gameplay and simulations
