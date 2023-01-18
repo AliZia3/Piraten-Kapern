@@ -7,12 +7,12 @@ public class Dice {
     static int howManyFaces = Faces.values().length;
     static Random bag = new Random();
 
-    // * Roll 1 dice
-    // public Faces roll() {
-    // return Faces.values()[bag.nextInt(howManyFaces)];
-    // }
+    // Roll 1 dice
+    public Faces roll() {
+    return Faces.values()[bag.nextInt(howManyFaces)];
+    }
 
-    // * Roll 8 dice (F02)
+    // Roll 8 dice (F02)
     public static ArrayList<Faces> rollEight() {
         ArrayList<Faces> rollResults = new ArrayList<Faces>();
 
@@ -23,7 +23,7 @@ public class Dice {
         return rollResults;
     }
 
-    // * Roll/Keep random dice (F03)
+    // Roll/Keep random dice (F03)
     public static ArrayList<Faces> reRoll(ArrayList<Faces> prevRollResults) {
         Random dice = new Random();
         int dices = dice.nextInt(7) + 2;
