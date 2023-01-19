@@ -8,9 +8,9 @@ public class Dice {
     static Random bag = new Random();
 
     // Roll 1 dice
-    public Faces roll() {
-        return Faces.values()[bag.nextInt(howManyFaces)];
-    }
+    // public Faces roll() {
+    //     return Faces.values()[bag.nextInt(howManyFaces)];
+    // }
 
     // Roll 8 dice (F02)
     public static ArrayList<Faces> rollEight() {
