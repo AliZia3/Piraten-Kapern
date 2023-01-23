@@ -20,24 +20,5 @@ public class Dice {
         return rollResults;
     }
 
-    // * Roll random dice
-    public static ArrayList<Faces> reRoll(ArrayList<Faces> prevRollResults) {
-        Random dice = new Random();
-        int dices = dice.nextInt(7) + 2;
-        ArrayList<Faces> nextRollResults = new ArrayList<Faces>(prevRollResults);
-        Collections.shuffle(nextRollResults);
 
-        // System.out.println("OLD LIST: " + prevRollResults);
-        // System.out.println("SHUFFLED LIST: " + nextRollResults);
-        // System.out.println("Number of Dices Kept: " + (nextRollResults.size() - dices));
-        // System.out.println("Number of Dices Rerolled: " + dices);
-
-        for (int i = 0; i < dices; i++) {
-            if (nextRollResults.get(i) != Faces.SKULL) {
-                nextRollResults.set(i, Faces.values()[bag.nextInt(howManyFaces)]);
-            }
-        }
-
-        return nextRollResults;
-    }
 }
