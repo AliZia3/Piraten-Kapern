@@ -8,26 +8,39 @@ public class PlayerStrategies {
         ArrayList<Faces> rollResults = Dice.rollEight();
         int[] turnStatus = { DiceData.Skulls(rollResults), DiceData.pointsCoinsDiamonds(rollResults) };
 
-        if (turnStatus[0] >= 3) {
-            return 0;
-        } else {
-            Random attempts = new Random();
-            int turnCondition = attempts.nextInt(2);
+        // Display initial roll results
+        System.out.println(currPlayer + " Rolled: " + rollResults);
+        System.out.println(currPlayer + " Skulls Rolled: " + turnStatus[0]);
 
-            while (turnCondition != 0) {
+        if (turnStatus[0] >= 3) {
+            turnStatus[1] = 0;
+            System.out.println(currPlayer + "(END OF TURN) Turn Score: " + turnStatus[1]);
+        } else {
+            Random rand = new Random();
+            boolean nextTurn = rand.nextBoolean();
+            System.out.println(currPlayer + " Turn Score: " + turnStatus[1]);
+
+            while (nextTurn) {
+                System.out.println("====================Reroll========================");
                 ArrayList<Faces> nextRollResults = Dice.reRoll(rollResults);
 
                 turnStatus[0] = DiceData.Skulls(nextRollResults);
                 turnStatus[1] = DiceData.pointsCoinsDiamonds(nextRollResults);
 
                 if (turnStatus[0] >= 3) {
-                    return 0;
+                    turnStatus[1] = 0;
+                    nextTurn = false;
                 } else {
-                    turnCondition = attempts.nextInt(2);
+                    nextTurn = rand.nextBoolean();
                 }
 
+                System.out.println(currPlayer + " Next Roll: " + nextRollResults);
+                System.out.println(currPlayer + " Skulls Rolled: " + turnStatus[0]);
+                System.out.println(currPlayer + " Turn Score: " + turnStatus[1]);
+
             }
-            return turnStatus[1];
         }
+        System.out.println("=====================New Turn=============================");
+        return turnStatus[1];
     }
 }
