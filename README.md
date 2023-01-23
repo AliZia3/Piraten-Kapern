@@ -34,7 +34,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |  x   | F03 | Score points: number of gold + diamonds x 100        |   D    | 01/12/23 | 01/16/23  |
 |  x   | F04 | end of turn/no points with three or more skulls      |   D    | 01/12/23 | 01/17/23  |
 |  x   | F05 | Turn-based Functionality                             |   D    | 01/16/23 | 01/17/23  |
-|  x   | F06 | Track players' scores                                |   D    | 01/17/23 | 01/18/23  |
+|  x   | F06 | Track/display players' scores throghout the game     |   D    | 01/17/23 | 01/18/23  |
 |      | F07 | Play 42 games                                        |   D    | 01/17/23 | 01/18/23  |
 |      | F08 | Print percentage of wins for each player             |   D    | 01/17/23 | 01/18/23  |
 | ...  | ... | ...                                                  |

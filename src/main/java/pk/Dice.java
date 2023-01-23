@@ -12,11 +12,9 @@ public class Dice {
     // * Roll 8 dice
     public static ArrayList<Faces> rollEight() {
         ArrayList<Faces> rollResults = new ArrayList<Faces>();
-
         for (int i = 0; i < 8; i++) {
             rollResults.add(Faces.values()[bag.nextInt(howManyFaces)]);
         }
-
         return rollResults;
     }
 
@@ -27,17 +25,16 @@ public class Dice {
         ArrayList<Faces> nextRollResults = new ArrayList<Faces>(prevRollResults);
         Collections.shuffle(nextRollResults);
 
-        System.out.println("OLD LIST: " + prevRollResults);
-        System.out.println("SHUFFLED LIST: " + nextRollResults);
-        System.out.println("Number of Dices Kept: " + (nextRollResults.size() - dices));
-        System.out.println("Number of Dices Rerolled: " + dices);
+        // System.out.println("OLD LIST: " + prevRollResults);
+        // System.out.println("SHUFFLED LIST: " + nextRollResults);
+        // System.out.println("Number of Dices Kept: " + (nextRollResults.size() - dices));
+        // System.out.println("Number of Dices Rerolled: " + dices);
 
         for (int i = 0; i < dices; i++) {
             if (nextRollResults.get(i) != Faces.SKULL) {
                 nextRollResults.set(i, Faces.values()[bag.nextInt(howManyFaces)]);
             }
         }
-
         return nextRollResults;
     }
 }

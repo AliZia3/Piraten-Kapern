@@ -28,3 +28,13 @@ Jan 18, 2023
 -   Completed F08
 -   Completed F09
 -   Integrated all features for smooth gameplay and simulations
+
+Jan 22, 2023
+
+-   Had to update F02 by shuffling the array because I realized that what I had originally would not be able to fully randomize players rerolling options
+-   Updated F01 because I accidentally pushed a wrong feature before
+
+Jan 23, 2023
+-   Started working on OOP for all the files
+-   Implemented and updated various classes (i.e added a player strategy class, dice data class and a game class and removed checkskull, points scored and turns classes)
+-   Completed full OOP code

@@ -17,6 +17,7 @@ public class Game {
         this.scoreToWin = 6000;
     }
 
+    // * Plays the game/runs simulation
     public void play(String player1, String player2, int gamesCount) {
         System.out.println("Welcome to Piraten Karpen Simulator!");
 
@@ -25,9 +26,9 @@ public class Game {
             player2Score = 0;
             while (player1Score <= scoreToWin && player2Score <= scoreToWin) {
                 player1Score += PlayerStrategies.randomStrategy(player1);
-                System.out.println("===============================================PLAYER1 SCORE: " + player1Score);
+                // System.out.println("===============================================PLAYER1 SCORE: " + player1Score);
                 player2Score += PlayerStrategies.randomStrategy(player2);
-                System.out.println("===============================================PLAYER2 SCORE: " + player2Score);
+                // System.out.println("===============================================PLAYER2 SCORE: " + player2Score);
             }
 
             if (player1Score >= scoreToWin) {
