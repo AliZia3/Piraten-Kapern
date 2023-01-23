@@ -1,18 +1,15 @@
 package pk;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
+// * Dice Class
 public class Dice {
-    static int howManyFaces = Faces.values().length;
-    static Random bag = new Random();
+    static private int howManyFaces = Faces.values().length;
+    static private Random bag = new Random();
 
-    // Roll 1 dice
-    // public Faces roll() {
-    //     return Faces.values()[bag.nextInt(howManyFaces)];
-    // }
-
-    // Roll 8 dice (F02)
+    // * Roll 8 dice
     public static ArrayList<Faces> rollEight() {
         ArrayList<Faces> rollResults = new ArrayList<Faces>();
 
@@ -23,11 +20,17 @@ public class Dice {
         return rollResults;
     }
 
-    // Roll/Keep random dice (F03)
+    // * Roll random dice
     public static ArrayList<Faces> reRoll(ArrayList<Faces> prevRollResults) {
         Random dice = new Random();
         int dices = dice.nextInt(7) + 2;
-        ArrayList<Faces> nextRollResults = prevRollResults;
+        ArrayList<Faces> nextRollResults = new ArrayList<Faces>(prevRollResults);
+        Collections.shuffle(nextRollResults);
+
+        // System.out.println("OLD LIST: " + prevRollResults);
+        // System.out.println("SHUFFLED LIST: " + nextRollResults);
+        // System.out.println("Number of Dices Kept: " + (nextRollResults.size() - dices));
+        // System.out.println("Number of Dices Rerolled: " + dices);
 
         for (int i = 0; i < dices; i++) {
             if (nextRollResults.get(i) != Faces.SKULL) {
@@ -37,5 +40,4 @@ public class Dice {
 
         return nextRollResults;
     }
-
 }
