@@ -1,4 +1,8 @@
 package pk;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+import java.util.Scanner;
 
 public class Game {
     // initial vars
@@ -6,7 +10,9 @@ public class Game {
     private int player2Score;
     private int player1Wins;
     private int player2Wins;
-    private int scoreToWin;
+    private final int scoreToWin;
+    private static final Logger logger = LogManager.getLogger(Game.class);
+    private static final String tracer = "trace";
 
     // Constructor
     public Game() {
@@ -20,9 +26,14 @@ public class Game {
     // * Plays the game/runs simulation
     public void play(String player1, String player2, int gamesCount) {
         System.out.println("Welcome to Piraten Karpen Simulator!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Trace Program? (type 'trace' for trace logs): ");
+        String logs = scanner.nextLine();
 
         for (int i = 0; i < gamesCount; i++) {
-            System.out.println("==================================NEW GAME==================================");
+            if (logs.equals(tracer)) {
+                logger.trace("==================================NEW GAME==================================");
+            }
             player1Score = 0;
             player2Score = 0;
             while (player1Score < scoreToWin && player2Score < scoreToWin) {
@@ -37,17 +48,26 @@ public class Game {
 
 //            System.out.println("!!!!!!!!!!!!!No New Turn - Game Has Finished!!!!!!!!!!!!!");
             if(player1Score == player2Score){
-                System.out.println("DRAW");
+                if (logs.equals(tracer)){
+                    logger.trace("DRAW");
+                }
             }
             else if (player1Score >= scoreToWin) {
                 player1Wins++;
-                System.out.println("Player 1 Wins");
+                if (logs.equals(tracer)){
+                    logger.trace("Player 1 Wins");
+                }
             } else {
                 player2Wins++;
-                System.out.println("Player 2 Wins");
+                if (logs.equals(tracer)){
+                    logger.trace("Player 2 Wins");
+                }
             }
-            System.out.println("Player 1 Final Score: " + player1Score);
-            System.out.println("Player 2 Final Score: " + player2Score);
+            if (logs.equals(tracer)){
+                logger.trace("Player 1 Final Score: " + player1Score);
+                logger.trace("Player 2 Final Score: " + player2Score);
+            }
+
         }
 
         double player1WinPercent = (player1Wins * 1.0 / gamesCount) * 100.0;
@@ -55,8 +75,7 @@ public class Game {
 
 //        System.out.println("Player 1 Wins: " + player1Wins);
 //        System.out.println("Player 2 Wins: " + player2Wins);
-        System.out.println("\n||||||||||||||||||WIN PERCENTAGES||||||||||||||||||");
-        System.out.println("Player 1 Win Percentage: " + player1WinPercent + "%");
+        System.out.println("\nPlayer 1 Win Percentage: " + player1WinPercent + "%");
         System.out.println("Player 2 Win Percentage: " + player2WinPercent + "%");
 
         System.out.println("That's all folks!");
