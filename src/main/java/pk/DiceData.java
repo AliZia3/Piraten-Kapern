@@ -3,7 +3,7 @@ package pk;
 import java.util.ArrayList;
 
 public class DiceData {
-    
+
     // * Check number of skulls
     public static int Skulls(ArrayList<Faces> rollResults) {
         int skullCount = 0;
