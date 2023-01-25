@@ -24,8 +24,10 @@ public class Game {
     }
 
     // * Plays the game/runs simulation
-    public void play(String player1, String player2, int gamesCount) {
+    public void play(int gamesCount) {
         System.out.println("Welcome to Piraten Karpen Simulator!");
+        String player1 = "player 1";
+        String player2 = "player 2";
         Scanner scanner = new Scanner(System.in);
         System.out.println("Trace Program? (type 'trace' for trace logs): ");
         String logs = scanner.nextLine();

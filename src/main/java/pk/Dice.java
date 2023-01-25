@@ -6,7 +6,7 @@ import java.util.Random;
 
 // * Dice Class
 public class Dice {
-    static private int howManyFaces = Faces.values().length;
+    static private final int howManyFaces = Faces.values().length;
     static private Random bag = new Random();
 
     // * Roll 8 dice
