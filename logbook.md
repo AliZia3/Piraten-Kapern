@@ -38,3 +38,6 @@ Jan 23, 2023
 -   Started working on OOP for all the files
 -   Implemented and updated various classes (i.e added a player strategy class, dice data class and a game class and removed checkskull, points scored and turns classes)
 -   Completed full OOP code
+
+Jan 25, 2023
+-   Worked on and finished the combo points feature and combo player strategy

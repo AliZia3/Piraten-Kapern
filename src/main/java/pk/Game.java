@@ -39,12 +39,9 @@ public class Game {
             player1Score = 0;
             player2Score = 0;
             while (player1Score < scoreToWin && player2Score < scoreToWin) {
-//                System.out.println("|||||||||||||||||||PLAYER1 SCORE: " + player1Score + "|||||||||||||||||||");
+                System.out.println("|||||||||||||||||||PLAYER1 SCORE: " + player1Score + "|||||||||||||||||||");
                 player1Score += PlayerStrategies.randomStrategyPlayer(player1);
-                if (player1Score >= scoreToWin) {
-                    break;
-                }
-//                System.out.println("|||||||||||||||||||PLAYER2 SCORE: " + player2Score + "|||||||||||||||||||");
+                System.out.println("|||||||||||||||||||PLAYER2 SCORE: " + player2Score + "|||||||||||||||||||");
                 player2Score += PlayerStrategies.randomStrategyPlayer(player2);
             }
 
@@ -54,7 +51,7 @@ public class Game {
                     logger.trace("DRAW");
                 }
             }
-            else if (player1Score >= scoreToWin) {
+            else if (player1Score >= scoreToWin && player1Score > player2Score) {
                 player1Wins++;
                 if (logs.equals(tracer)){
                     logger.trace("Player 1 Wins");
