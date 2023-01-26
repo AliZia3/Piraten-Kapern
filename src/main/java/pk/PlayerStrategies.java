@@ -8,7 +8,7 @@ public class PlayerStrategies {
     private static Random rand = new Random();
 
     // * Implements the strategy where player randomly decides if they want to keep rerolling
-    public static int randomStrategyPlayer(String currPlayer) {
+    public static int randomStrategyPlayer() {
         ArrayList<Faces> rollResults = Dice.rollEight();
         int numSkulls = DiceData.Skulls(rollResults);
         int pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(rollResults);
@@ -55,7 +55,7 @@ public class PlayerStrategies {
     }
 
 
-    public static int comboStrategyPlayer(String currPlayer) {
+    public static int comboStrategyPlayer() {
 
         ArrayList<Faces> rollResults = Dice.rollEight();
         int numSkulls = DiceData.Skulls(rollResults);
