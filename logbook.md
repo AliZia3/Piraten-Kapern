@@ -40,4 +40,7 @@ Jan 23, 2023
 -   Completed full OOP code
 
 Jan 25, 2023
+-   Worked on the combo points feature and combo player strategy
+
+Jan 26, 2023
 -   Worked on and finished the combo points feature and combo player strategy

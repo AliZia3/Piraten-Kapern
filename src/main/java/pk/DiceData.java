@@ -30,7 +30,7 @@ public class DiceData {
     public static int comboPoints(ArrayList<Faces> rollResults) {
         int score = 0;
         int[] counts = new int[6];
-        for(int i=0; i< rollResults.size(); i++) {
+        for(int i=0; i < rollResults.size(); i++) {
             if (rollResults.get(i) != Faces.SKULL) {
                 counts[rollResults.get(i).ordinal()]++;
             }
@@ -53,5 +53,58 @@ public class DiceData {
             }
         }
         return score;
+    }
+
+    // * Count number of faces seen in the roll
+    public static int[] faceCounter(ArrayList<Faces> rollResults) {
+        int goldCount = 0;
+        int diamondCount = 0;
+        int saberCount = 0;
+        int parrotCount = 0;
+        int monkeyCount = 0;
+        for (int i=0; i<rollResults.size(); i++){
+            if(rollResults.get(i)==Faces.MONKEY) {
+                monkeyCount++;
+            }
+            if(rollResults.get(i)==Faces.PARROT) {
+                parrotCount++;
+            }
+            if(rollResults.get(i)==Faces.GOLD) {
+                goldCount++;
+            }
+            if(rollResults.get(i)==Faces.DIAMOND) {
+                diamondCount++;
+            }
+            if(rollResults.get(i)==Faces.SABER) {
+                saberCount++;
+            }
+        }
+
+        return new int[]{monkeyCount, parrotCount, goldCount, diamondCount, saberCount};
+    }
+
+    // * Find face that appears the most in the roll
+    public static Faces maxFaceCount(ArrayList<Faces> rollResults) {
+        int[] faceCounter = faceCounter(rollResults);
+        int maxCount = 0;
+        Faces maxFace = Faces.SKULL;
+        for (int i=0; i<faceCounter.length; i++){
+            if(faceCounter[i] > maxCount) {
+                maxCount = faceCounter[i];
+                // Ensures that if multiples faces appear the same time then priority is given to gold as it provides better points
+                if(faceCounter[i] == faceCounter[2]) {
+                    maxFace = Faces.GOLD;
+                }
+                else if (faceCounter[3] == faceCounter[i]) {
+                    maxFace = Faces.DIAMOND;
+                }
+                else {
+                    // Array faceCounter has same ordering as in Faces.java so returning the i-th index returns the correct face
+                    maxFace = Faces.values()[i];
+                }
+            }
+        }
+
+        return maxFace;
     }
 }
