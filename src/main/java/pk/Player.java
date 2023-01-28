@@ -16,12 +16,24 @@ public class Player {
         }
     }
 
-    public int turn() {
-        if (Objects.equals(strategy, "combo")) {
-            score = PlayerStrategies.comboStrategyPlayer();
-        } else {
-            score = PlayerStrategies.randomStrategyPlayer();
+    public int turn(Cards cardDrawn, String currPlayer) {
+        if(cardDrawn.equals(Cards.NOP)){
+            if (Objects.equals(strategy, "combo")) {
+                score = PlayerStrategies.comboStrategy(currPlayer);
+            } else {
+                score = PlayerStrategies.randomStrategy(currPlayer);
+            }
+            return score;
         }
-        return score;
+
+        else {
+            if (cardDrawn.equals(Cards.SEABATTLE300)) {
+                return PlayerStrategies.seaBattleStrategy(2, 300, currPlayer);
+            } else if (cardDrawn.equals(Cards.SEABATTLE500)){
+                return PlayerStrategies.seaBattleStrategy(3, 500, currPlayer);
+            } else {
+                return PlayerStrategies.seaBattleStrategy(4, 1000, currPlayer);
+            }
+        }
     }
 }

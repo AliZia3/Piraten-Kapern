@@ -46,3 +46,4 @@ Jan 25, 2023
 Jan 26, 2023
 -   Worked on and finished the combo points feature and combo player strategy
 -   Completed feature to let user decide to use tracer and which strategy to choose from command line argument
+-   Started working on Step 5

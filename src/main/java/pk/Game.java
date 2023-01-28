@@ -1,8 +1,9 @@
 package pk;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
-import java.util.Scanner;
+import javax.xml.transform.Source;
+
+import org.apache.logging.log4j.LogManager;
 
 public class Game {
     // initial vars
@@ -13,7 +14,6 @@ public class Game {
     private int draws;
     private final int scoreToWin;
     private static final Logger logger = LogManager.getLogger(Game.class);
-    // private static final String tracer = "trace";
 
     // Constructor
     public Game() {
@@ -28,14 +28,12 @@ public class Game {
     // * Plays the game/runs simulation
     public void play(int gamesCount, boolean tracer, String strategy1, String strategy2) {
         System.out.println("Welcome to Piraten Karpen Simulator!");
+        String playerOne = "player1";
+        String playerTwo = "player2";
 
         Player player1 = new Player(strategy1);
         Player player2 = new Player(strategy2);
-
-        // Scanner scanner = new Scanner(System.in);
-        // System.out.println("Trace Program? (type 'trace' for trace logs): ");
-        // String logs = scanner.nextLine();
-        // scanner.close();
+        CardDeck cardDeck = new CardDeck();
 
         for (int i = 0; i < gamesCount; i++) {
             if (tracer) {
@@ -44,14 +42,16 @@ public class Game {
             player1Score = 0;
             player2Score = 0;
 
+            System.out.println("CARD DECK: " + cardDeck.getShuffledDeck());
+
             while (player1Score < scoreToWin && player2Score < scoreToWin) {
-//                 System.out.println("|||||||||||||||||||PLAYER1 SCORE: " + player1Score + "|||||||||||||||||||");
-                player1Score += player1.turn();
-//                 System.out.println("|||||||||||||||||||PLAYER2 SCORE: " + player2Score + "|||||||||||||||||||");
-                player2Score += player2.turn();
+                System.out.println("|||||||||||||||||||PLAYER1 SCORE: " + player1Score + "|||||||||||||||||||");
+                player1Score += player1.turn(cardDeck.drawCard(), playerOne);
+
+                System.out.println("|||||||||||||||||||PLAYER2 SCORE: " + player2Score + "|||||||||||||||||||");
+                player2Score += player2.turn(cardDeck.drawCard(), playerTwo);
             }
 
-//            System.out.println("!!!!!!!!!!!!!No New Turn - Game Has Finished!!!!!!!!!!!!!");
             if(player1Score == player2Score){
                 draws++;
                 if (tracer){

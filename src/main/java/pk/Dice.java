@@ -37,7 +37,7 @@ public class Dice {
     // * Roll specified dice to maximize combos
     public static ArrayList<Faces> combosReRoll(ArrayList<Faces> prevRollResults, Faces maxFace) {
         // still rerolling a random number of dice between 2 and 8, but doesnt include dice we want combo for
-        // ! Code may seem redundant and similar to above method, but is used to ensure that the random player and combo players' rerolls are different
+        // Code may seem redundant and similar to above method, but is used to ensure that the random player and combo players' rerolls are different
         dices = bag.nextInt(7) + 2;
         ArrayList<Faces> reRollIndices = new ArrayList<Faces>(prevRollResults);
         Collections.shuffle(reRollIndices);

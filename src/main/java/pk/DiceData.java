@@ -26,6 +26,17 @@ public class DiceData {
         return score * 100;
     }
 
+    // * Check number of sabers
+    public static int Sabers(ArrayList<Faces> rollResults) {
+        int saberCount = 0;
+        for (int i = 0; i < rollResults.size(); i++) {
+            if (rollResults.get(i) == Faces.SABER) {
+                saberCount++;
+            }
+        }
+        return saberCount;
+    }
+
     // * Score points via combos
     public static int comboPoints(ArrayList<Faces> rollResults) {
         int score = 0;
