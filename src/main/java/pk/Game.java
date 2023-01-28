@@ -42,13 +42,13 @@ public class Game {
             player1Score = 0;
             player2Score = 0;
 
-            System.out.println("CARD DECK: " + cardDeck.getShuffledDeck());
+//            System.out.println("CARD DECK: " + cardDeck.getShuffledDeck());
 
             while (player1Score < scoreToWin && player2Score < scoreToWin) {
-                System.out.println("|||||||||||||||||||PLAYER1 SCORE: " + player1Score + "|||||||||||||||||||");
+//                System.out.println("|||||||||||||||||||PLAYER1 SCORE: " + player1Score + "|||||||||||||||||||");
                 player1Score += player1.turn(cardDeck.drawCard(), playerOne);
 
-                System.out.println("|||||||||||||||||||PLAYER2 SCORE: " + player2Score + "|||||||||||||||||||");
+//                System.out.println("|||||||||||||||||||PLAYER2 SCORE: " + player2Score + "|||||||||||||||||||");
                 player2Score += player2.turn(cardDeck.drawCard(), playerTwo);
             }
 

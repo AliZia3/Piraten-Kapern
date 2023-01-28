@@ -47,3 +47,10 @@ Jan 26, 2023
 -   Worked on and finished the combo points feature and combo player strategy
 -   Completed feature to let user decide to use tracer and which strategy to choose from command line argument
 -   Started working on Step 5
+
+Jan 27, 2023
+-   Created card deck and cards enum
+-   Worked on step 5 (Tried figuring out sea battle strategy)
+
+Jan 28, 2023
+-   Completed sea battle strategy
