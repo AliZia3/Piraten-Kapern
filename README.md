@@ -45,5 +45,5 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |      | F10 | maximizes combos while picking dices to reroll (Combo strategy)        |   D    | 01/25/23 | 01/26/23  |
 |      | F11 | Let user decide between the strategies and trace mode                  |   D    | 01/25/23 | 01/26/23  |
 |      | F12 | Implement Cards: Player draws cards                                    |   D    | 01/26/23 | 01/27/23  |
-|      | F13 | Maximize combos of sabers when sea battle card drawn (sea battle strategy) |   D    | 01/26/23 | 01/27/23  |
+|      | F13 | Maximize combos of sabers when sea battle card drawn (sea battle strategy) |   D    | 01/26/23 | 01/28/23  |
 | ...  | ... | ...                                                                    |
