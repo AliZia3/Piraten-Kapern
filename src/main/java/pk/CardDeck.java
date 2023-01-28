@@ -11,7 +11,8 @@ public class CardDeck {
         for(int i=0; i<2; i++) cardDeck.add(Cards.SEABATTLE300);
         for(int i=0; i<2; i++) cardDeck.add(Cards.SEABATTLE500);
         for(int i=0; i<2; i++) cardDeck.add(Cards.SEABATTLE1000);
-        for(int i=0; i<29; i++) cardDeck.add(Cards.NOP);
+        for(int i=0; i<3; i++) cardDeck.add(Cards.MB);
+        for(int i=0; i<25; i++) cardDeck.add(Cards.NOP);
         Collections.shuffle(cardDeck);
     }
 

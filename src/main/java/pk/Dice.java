@@ -1,6 +1,7 @@
 package pk;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -35,18 +36,17 @@ public class Dice {
     }
 
     // * Roll specified dice to maximize combos
-    public static ArrayList<Faces> combosReRoll(ArrayList<Faces> prevRollResults, Faces maxFace) {
-        // still rerolling a random number of dice between 2 and 8, but doesnt include dice we want combo for
-        // Code may seem redundant and similar to above method, but is used to ensure that the random player and combo players' rerolls are different
+    public static ArrayList<Faces> combosReRoll(ArrayList<Faces> prevRollResults, Faces[] facesKept) {
+        // still rerolling a random number of dice between 2 and 8, but does not include dice we want combo for
         dices = bag.nextInt(7) + 2;
-        ArrayList<Faces> reRollIndices = new ArrayList<Faces>(prevRollResults);
-        Collections.shuffle(reRollIndices);
+        ArrayList<Faces> nextRollResults = new ArrayList<Faces>(prevRollResults);
+        Collections.shuffle(nextRollResults);
 
         for (int i=0; i < dices; i++) {
-            if(reRollIndices.get(i) != maxFace && reRollIndices.get(i) != Faces.SKULL) {
-                reRollIndices.set(i, Faces.values()[bag.nextInt(howManyFaces)]);
+            if(!Arrays.asList(facesKept).contains(nextRollResults.get(i))) {
+                nextRollResults.set(i, Faces.values()[bag.nextInt(howManyFaces)]);
             }
         }
-        return reRollIndices;
+        return nextRollResults;
     }
 }

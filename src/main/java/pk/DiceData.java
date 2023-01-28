@@ -1,5 +1,7 @@
 package pk;
 
+import com.sun.source.tree.BreakTree;
+
 import java.util.ArrayList;
 
 public class DiceData {
@@ -37,13 +39,39 @@ public class DiceData {
         return saberCount;
     }
 
+    // * Score points via monkey and parrot
+    public static int pointsMonkeyParrot(ArrayList<Faces> rollResults) {
+        int count = 0;
+        for (int i = 0; i < rollResults.size(); i++) {
+            if (rollResults.get(i) == Faces.PARROT || rollResults.get(i) == Faces.MONKEY) {
+                count++;
+            }
+        }
+        if (count == 3) return 100;
+        if (count == 4) return 200;
+        if (count == 5) return 500;
+        if (count == 6) return 1000;
+        if (count == 7) return 2000;
+        if (count == 8) return 4000;
+        return 0;
+    }
+
     // * Score points via combos
-    public static int comboPoints(ArrayList<Faces> rollResults) {
+    public static int comboPoints(ArrayList<Faces> rollResults, boolean monkeyBusiness) {
         int score = 0;
         int[] counts = new int[6];
         for(int i=0; i < rollResults.size(); i++) {
-            if (rollResults.get(i) != Faces.SKULL) {
-                counts[rollResults.get(i).ordinal()]++;
+            // If monkey business strategy (monkey business card drawn) than counts only contains the number of occurences of anything but skulls, parrot, monkey (ignore these faces when looking for combo)
+            if(monkeyBusiness) {
+                if (rollResults.get(i) != Faces.SKULL || rollResults.get(i) != Faces.PARROT || rollResults.get(i) != Faces.MONKEY) {
+                    counts[rollResults.get(i).ordinal()]++;
+                }
+            }
+            // If not monkey strategy
+            else {
+                if (rollResults.get(i) != Faces.SKULL) {
+                    counts[rollResults.get(i).ordinal()]++;
+                }
             }
         }
         for (int i = 0; i < counts.length; i++) {
@@ -65,6 +93,34 @@ public class DiceData {
         }
         return score;
     }
+
+//    public static int monkeyBusinessComboPoints(ArrayList<Faces> rollResults) {
+//        int score = 0;
+//        int[] counts = new int[6];
+//        for(int i=0; i < rollResults.size(); i++) {
+//            if (rollResults.get(i) == Faces.PARROT || rollResults.get(i) == Faces.MONKEY) {
+//                counts[rollResults.get(i).ordinal()]++;
+//            }
+//        }
+//        for (int i = 0; i < counts.length; i++) {
+//            if (counts[i] >= 3) {
+//                if (counts[i] == 3) {
+//                    score += 100;
+//                } else if (counts[i] == 4) {
+//                    score += 200;
+//                } else if (counts[i] == 5) {
+//                    score += 500;
+//                } else if (counts[i] == 6) {
+//                    score += 1000;
+//                } else if (counts[i] == 7) {
+//                    score += 2000;
+//                } else if (counts[i] == 8) {
+//                    score += 4000;
+//                }
+//            }
+//        }
+//        return score;
+//    }
 
     // * Count number of faces seen in the roll
     public static int[] faceCounter(ArrayList<Faces> rollResults) {

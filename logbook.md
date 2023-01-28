@@ -54,3 +54,6 @@ Jan 27, 2023
 
 Jan 28, 2023
 -   Completed sea battle strategy
+-   Started Step 6
+-   Implemented monkey business card
+-   Implemented strategy to go alongside monkey business card

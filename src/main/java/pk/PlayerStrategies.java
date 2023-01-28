@@ -11,101 +11,56 @@ public class PlayerStrategies {
         ArrayList<Faces> rollResults = Dice.rollEight();
         int numSkulls = DiceData.Skulls(rollResults);
         int pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(rollResults);
-        int comboPoints = DiceData.comboPoints(rollResults);
+        int comboPoints = DiceData.comboPoints(rollResults, false);
         int totalPoints = comboPoints + pointsCoinsDiamonds;
+        boolean reRoll = true;
 
-//        System.out.println(currPlayer + " Rolled: " + rollResults);
-//        System.out.println(currPlayer + " Skulls Rolled: " + numSkulls);
+        while (reRoll) {
+            if (numSkulls >= 3)
+                return 0;
 
-        if (numSkulls >= 3) {
-            totalPoints = 0;
-//            System.out.println(currPlayer + "(END OF TURN) Turn Score: " + totalPoints);
-        } else {
-            boolean reRoll = rand.nextBoolean();
-//            System.out.println(currPlayer + " Turn Score: " + totalPoints);
-//            System.out.println(currPlayer + " Coins/Diamonds Score: " + pointsCoinsDiamonds);
-//            System.out.println(currPlayer + " Combo Score: " + comboPoints);
+            reRoll = rand.nextBoolean();
 
-            while (reRoll) {
-//                System.out.println("--------------------------Reroll--------------------------");
-                ArrayList<Faces> nextRollResults = Dice.randomReRoll(rollResults);
-                numSkulls = DiceData.Skulls(nextRollResults);
-                pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(nextRollResults);
-                comboPoints = DiceData.comboPoints(nextRollResults);
-                totalPoints = comboPoints + pointsCoinsDiamonds;
-
-                if (numSkulls >= 3) {
-                    totalPoints = 0;
-                    reRoll = false;
-                } else {
-                    reRoll = rand.nextBoolean();
-                }
-
-//                System.out.println(currPlayer + " Next Roll: " + nextRollResults);
-//                System.out.println(currPlayer + " Skulls Rolled: " + numSkulls);
-//                System.out.println(currPlayer + " Turn Score: " + totalPoints);
-//                System.out.println(currPlayer + " Coins/Diamonds Score: " + pointsCoinsDiamonds);
-//                System.out.println(currPlayer + " Combo Score: " + comboPoints);
-            }
+            ArrayList<Faces> nextRollResults = Dice.randomReRoll(rollResults);
+            numSkulls = DiceData.Skulls(nextRollResults);
+            pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(nextRollResults);
+            comboPoints = DiceData.comboPoints(nextRollResults, false);
+            totalPoints = comboPoints + pointsCoinsDiamonds;
         }
-//        System.out.println("--------------------------New Turn--------------------------");
         return totalPoints;
     }
 
-
     public static int comboStrategy(String currPlayer) {
 
-        // Initial Roll
         ArrayList<Faces> rollResults = Dice.rollEight();
         int numSkulls = DiceData.Skulls(rollResults);
         int pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(rollResults);
-        int comboPoints = DiceData.comboPoints(rollResults);
+        int comboPoints = DiceData.comboPoints(rollResults,false);
         int totalPoints = comboPoints + pointsCoinsDiamonds;
 
-//        System.out.println(currPlayer + " Rolled: " + rollResults);
-//        System.out.println(currPlayer + " Skulls Rolled: " + numSkulls);
+        int fourOfAKindPoints = 200;
+        Faces[] facesKept = {DiceData.maxFaceCount(rollResults), Faces.SKULL};
 
-        if (numSkulls >= 3) {
-            totalPoints = 0;
-//            System.out.println(currPlayer + "(END OF TURN) Turn Score: " + totalPoints);
-        } else {
-            int fourOfAKindPoints = 200;
-            Faces faceKept = DiceData.maxFaceCount(rollResults);
-            boolean reRoll = true;
+        while (true) {
+            if (numSkulls >= 3)
+                return 0;
+            // If user has rolled 2 skulls and has gotten 400 points, don't reroll
+            if (numSkulls == 2 && totalPoints >= 300)
+                return totalPoints;
+            // If user has rolled at least 4 of a kind (meaning 200 points), don't reroll
+            if (comboPoints >= fourOfAKindPoints)
+                return totalPoints;
+            // If user has gotten 700 points, don't reroll
+            if (totalPoints >= 600)
+                return totalPoints;
 
-//            System.out.println("!!!!!!!!!!! FACE KEPT: " + faceKept);
-//            System.out.println(currPlayer + " Turn Score: " + totalPoints);
-//            System.out.println(currPlayer + " Coins/Diamonds Score: " + pointsCoinsDiamonds);
-//            System.out.println(currPlayer + " Combo Score: " + comboPoints);
+            ArrayList<Faces> nextRollResults = Dice.combosReRoll(rollResults, facesKept);
+            numSkulls = DiceData.Skulls(nextRollResults);
+            pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(nextRollResults);
+            comboPoints = DiceData.comboPoints(nextRollResults, false);
+            totalPoints = comboPoints + pointsCoinsDiamonds;
 
-            while (reRoll) {
-                // If user has rolled 2 skulls and has gotten 400 points, don't reroll
-                if (numSkulls == 2 && totalPoints >= 300) break;
-                // If user has rolled at least 4 of a kind (meaning 200 points), don't reroll
-                if (comboPoints >= fourOfAKindPoints) break;
-                // If user has gotten 700 points, don't reroll
-                if (totalPoints >= 600) break;
-
-//                System.out.println("--------------------------Reroll--------------------------");
-                ArrayList<Faces> nextRollResults = Dice.combosReRoll(rollResults, faceKept);
-                numSkulls = DiceData.Skulls(nextRollResults);
-                pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(nextRollResults);
-                comboPoints = DiceData.comboPoints(nextRollResults);
-                totalPoints = comboPoints + pointsCoinsDiamonds;
-
-                if (numSkulls >= 3) {
-                    totalPoints = 0;
-                    reRoll = false;
-                }
-//                System.out.println(currPlayer + " Next Roll: " + nextRollResults);
-//                System.out.println(currPlayer + " Skulls Rolled: " + numSkulls);
-//                System.out.println(currPlayer + " Turn Score: " + totalPoints);
-//                System.out.println(currPlayer + " Coins/Diamonds Score: " + pointsCoinsDiamonds);
-//                System.out.println(currPlayer + " Combo Score: " + comboPoints);
-            }
         }
-//        System.out.println("--------------------------New Turn--------------------------");
-        return totalPoints;
     }
 
     public static int seaBattleStrategy(int sabersNeeded, int points, String currPlayer) {
@@ -113,61 +68,62 @@ public class PlayerStrategies {
         ArrayList<Faces> rollResults = Dice.rollEight();
         int numSkulls = DiceData.Skulls(rollResults);
         int pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(rollResults);
-        int comboPoints = DiceData.comboPoints(rollResults);
+        int comboPoints = DiceData.comboPoints(rollResults,false);
         int numSabers = DiceData.Sabers(rollResults);
         int totalPoints = comboPoints + pointsCoinsDiamonds;
 
-//        System.out.println(currPlayer + " Rolled: " + rollResults);
-//        System.out.println(currPlayer + " Skulls Rolled: " + numSkulls);
-//        System.out.println(currPlayer + " Sabers Rolled: " + numSabers);
+        Faces[] facesKept = {Faces.SABER, Faces.SKULL};
 
-        if (numSkulls >= 3) {
-            // reset total score
-            totalPoints = 0;
-            // deduct points for losing sea battle
-            totalPoints -= points;
-//            System.out.println(currPlayer + "(END OF TURN) Turn Score: " + totalPoints);
-        }
-        else if (numSabers>=sabersNeeded) {
-            totalPoints += points;
-//            System.out.println(currPlayer + "(END OF TURN REQUIRED SABERS REACHED) Turn Score: " + totalPoints);
-        }
-        else {
-            boolean reRoll = true;
-            Faces faceKept = Faces.SABER;
-
-//            System.out.println("FACE KEPT FOR SABER REROLL: " + faceKept);
-
-//            System.out.println(currPlayer + " Turn Score: " + totalPoints);
-//            System.out.println(currPlayer + " Coins/Diamonds Score: " + pointsCoinsDiamonds);
-//            System.out.println(currPlayer + " Combo Score: " + comboPoints);
-            while (reRoll) {
-//                System.out.println("--------------------------Reroll--------------------------");
-                ArrayList<Faces> nextRollResults = Dice.combosReRoll(rollResults, faceKept);
-                numSkulls = DiceData.Skulls(nextRollResults);
-                pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(nextRollResults);
-                comboPoints = DiceData.comboPoints(nextRollResults);
-                numSabers = DiceData.Sabers(rollResults);
-                totalPoints = comboPoints + pointsCoinsDiamonds;
-
-                if (numSkulls >= 3) {
-                    totalPoints = 0;
-                    totalPoints -= points;
-                    reRoll = false;
-                } else if (numSabers>=sabersNeeded){
-                    totalPoints += points;
-                    reRoll = false;
-                }
-
-//                System.out.println(currPlayer + " Next Roll: " + nextRollResults);
-//                System.out.println(currPlayer + " Skulls Rolled: " + numSkulls);
-//                System.out.println(currPlayer + " Sabers Rolled: " + numSabers);
-//                System.out.println(currPlayer + " Turn Score: " + totalPoints);
-//                System.out.println(currPlayer + " Coins/Diamonds Score: " + pointsCoinsDiamonds);
-//                System.out.println(currPlayer + " Combo Score: " + comboPoints);
+        while (true) {
+            if (numSkulls >= 3) {
+                totalPoints = 0;
+                totalPoints -= points;
+                return totalPoints;
+            } else if (numSabers >= sabersNeeded) {
+                totalPoints += points;
+                return totalPoints;
             }
+
+            ArrayList<Faces> nextRollResults = Dice.combosReRoll(rollResults, facesKept);
+            numSkulls = DiceData.Skulls(nextRollResults);
+            pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(nextRollResults);
+            comboPoints = DiceData.comboPoints(nextRollResults,false);
+            numSabers = DiceData.Sabers(rollResults);
+            totalPoints = comboPoints + pointsCoinsDiamonds;
         }
-//        System.out.println("--------------------------New Turn--------------------------");
-        return totalPoints;
     }
+
+    public static int monkeyBusinessStrategy() {
+        ArrayList<Faces> rollResults = Dice.rollEight();
+        int numSkulls = DiceData.Skulls(rollResults);
+        int pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(rollResults);
+        int pointsMonkeyParrot = DiceData.pointsMonkeyParrot(rollResults);
+        int comboPoints = DiceData.comboPoints(rollResults, true);
+        int totalPoints = pointsMonkeyParrot + pointsCoinsDiamonds + comboPoints;
+        int fourOfAKindPoints = 200;
+        Faces[] facesKept = {Faces.MONKEY, Faces.PARROT, Faces.SKULL};
+
+        while (true) {
+            if (numSkulls >= 3)
+                return 0;
+            // If user has rolled 2 skulls and has gotten 400 points, don't reroll
+            if (numSkulls == 2 && totalPoints >= 300)
+                return totalPoints;
+            // If user has gotten 700 points, don't reroll
+            if (totalPoints >= 600)
+                return totalPoints;
+            // If user has rolled at least 4 of a kind (meaning 200 points), don't reroll
+            if (comboPoints >= fourOfAKindPoints || pointsMonkeyParrot >= fourOfAKindPoints)
+                return totalPoints;
+
+            ArrayList<Faces> nextRollResults = Dice.combosReRoll(rollResults, facesKept);
+            numSkulls = DiceData.Skulls(nextRollResults);
+            pointsCoinsDiamonds = DiceData.pointsCoinsDiamonds(nextRollResults);
+            pointsMonkeyParrot = DiceData.pointsMonkeyParrot(nextRollResults);
+            comboPoints = DiceData.comboPoints(nextRollResults, true);
+            totalPoints = pointsMonkeyParrot + pointsCoinsDiamonds + comboPoints;
+
+        }
+    }
+
 }

@@ -27,7 +27,9 @@ public class Player {
         }
 
         else {
-            if (cardDrawn.equals(Cards.SEABATTLE300)) {
+            if (cardDrawn.equals(Cards.MB)) {
+                return PlayerStrategies.monkeyBusinessStrategy();
+            } else if (cardDrawn.equals(Cards.SEABATTLE300)) {
                 return PlayerStrategies.seaBattleStrategy(2, 300, currPlayer);
             } else if (cardDrawn.equals(Cards.SEABATTLE500)){
                 return PlayerStrategies.seaBattleStrategy(3, 500, currPlayer);
