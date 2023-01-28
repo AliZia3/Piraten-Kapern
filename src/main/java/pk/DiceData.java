@@ -94,34 +94,6 @@ public class DiceData {
         return score;
     }
 
-//    public static int monkeyBusinessComboPoints(ArrayList<Faces> rollResults) {
-//        int score = 0;
-//        int[] counts = new int[6];
-//        for(int i=0; i < rollResults.size(); i++) {
-//            if (rollResults.get(i) == Faces.PARROT || rollResults.get(i) == Faces.MONKEY) {
-//                counts[rollResults.get(i).ordinal()]++;
-//            }
-//        }
-//        for (int i = 0; i < counts.length; i++) {
-//            if (counts[i] >= 3) {
-//                if (counts[i] == 3) {
-//                    score += 100;
-//                } else if (counts[i] == 4) {
-//                    score += 200;
-//                } else if (counts[i] == 5) {
-//                    score += 500;
-//                } else if (counts[i] == 6) {
-//                    score += 1000;
-//                } else if (counts[i] == 7) {
-//                    score += 2000;
-//                } else if (counts[i] == 8) {
-//                    score += 4000;
-//                }
-//            }
-//        }
-//        return score;
-//    }
-
     // * Count number of faces seen in the roll
     public static int[] faceCounter(ArrayList<Faces> rollResults) {
         int goldCount = 0;

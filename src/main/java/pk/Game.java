@@ -51,6 +51,7 @@ public class Game {
 //                System.out.println("|||||||||||||||||||PLAYER2 SCORE: " + player2Score + "|||||||||||||||||||");
                 player2Score += player2.turn(cardDeck.drawCard(), playerTwo);
             }
+//            System.out.println("No New Turn (Game Has Finished)");
 
             if(player1Score == player2Score){
                 draws++;
