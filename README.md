@@ -9,12 +9,12 @@
     -   `mvn clean`
 -   To compile the project:
     -   `mvn compile`
--   To run the project in development mode (runs with random and combo strategy players and with trace mode):
+-   To run the project in development mode (42 games, runs with random and combo strategy players and without trace mode):
     -   `mvn -q exec:java` (here, `-q` tells maven to be _quiet_)
--   To run the project in trace mode and with strategies (combo & random):
-    -   `mvn -q exec:java -Dexec.args="trace combo random"` (here, `-q` tells maven to be _quiet_)
--   To run the project without trace mode with strategies (random & combo):
-    -   `mvn -q exec:java -Dexec.args="random combo"` (here, `-q` tells maven to be _quiet_)
+-   To run the project with certain number of games with certain strategies (combo & random) and with trace mode:
+    -   `mvn -q exec:java -Dexec.args="games combo random trace"` (here, `-q` tells maven to be _quiet_)
+-   To run the project with certain games with strategies (random & combo) and without trace mode:
+    -   `mvn -q exec:java -Dexec.args="games random combo"` (here, `-q` tells maven to be _quiet_)
 -   To package the project as a turn-key artefact:
     -   `mvn package`
 -   To run the packaged delivery:

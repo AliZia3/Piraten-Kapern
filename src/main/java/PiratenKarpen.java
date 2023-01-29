@@ -1,4 +1,5 @@
 import pk.Game;
+import pk.ManageLogs;
 
 public class PiratenKarpen {
     public static void main(String[] args) {
@@ -6,19 +7,13 @@ public class PiratenKarpen {
         Game game = new Game();
         // If no command line arguments given
         if (args.length == 0) {
-            game.play(42, true, "random", "combo");
+            game.play(42, "random", "combo");
+            return;
         }
-        // Run without trace mode and with strategies ('trace' not given as command line argument)
-        else if (args.length < 3) {
-            game.play(42,false, args[0], args[1]);
+        // If 4 command line arguments (run with user inputted command line argument)
+        if (args.length == 4) {
+            ManageLogs.loggerCondition(args[3]);
         }
-        // Run with trace mode and with strategies ('trace' given as command line argument)
-        else {
-            for (String arg:args) {
-                game.play(42, arg.contains("trace"), args[1], args[2]);
-                break;
-            }
-        }
-
+        game.play(Integer.parseInt(args[0]), args[1], args[2]);
     }
 }
