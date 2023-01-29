@@ -1,8 +1,5 @@
 package pk;
 import org.apache.logging.log4j.Logger;
-
-import javax.xml.transform.Source;
-
 import org.apache.logging.log4j.LogManager;
 
 public class Game {
@@ -81,6 +78,7 @@ public class Game {
         double player2WinPercent = Math.round((player2Wins * 1.0 / gamesCount)*100.0);
 
         if (tracer){
+            System.out.println("====================SIMULATION RESULTS====================");
             logger.trace("Player 1 Wins: " + player1Wins);
             logger.trace("Player 2 Wins: " + player2Wins);
             logger.trace("Number of Draws: " + draws);

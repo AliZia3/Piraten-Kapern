@@ -1,14 +1,12 @@
 import pk.Game;
 
-import java.util.Objects;
-
 public class PiratenKarpen {
     public static void main(String[] args) {
 
         Game game = new Game();
         // If no command line arguments given
         if (args.length == 0) {
-            game.play(42, false, "random", "combo");
+            game.play(42, true, "random", "combo");
         }
         // Run without trace mode and with strategies ('trace' not given as command line argument)
         else if (args.length < 3) {
