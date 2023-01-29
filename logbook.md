@@ -57,3 +57,7 @@ Jan 28, 2023
 -   Started Step 6
 -   Implemented monkey business card
 -   Implemented strategy to go alongside monkey business card
+
+Jan 29, 2023
+-   Fixed log statement and cleaned up code
+-   Implemented a new class to keep track of user wanting to use or not use logging statements
